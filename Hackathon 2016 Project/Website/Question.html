@@ -1,0 +1,139 @@
+
+
+<!DOCTYPE HTML>
+
+
+<html>
+<head>
+</head>
+<style>
+body {
+    background: url(test.gif);
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+</style>
+
+<body>
+	<a href="Healthier Bronx.html ">Go Back</a>
+<p>
+        Health Trivia
+        <br />
+        Asking question <span id="NumberAsked">1</span> of 10 with <span id="NumberCorrect">0</span> answers correct</p>
+    <p>
+        <span id="TriviaQuestion">???</span>
+    </p>
+    <p>
+        &nbsp;
+        <input id="RadioTrue" type="radio" value="true" name="answer" checked="checked" /> True
+        &nbsp;&nbsp;&nbsp;
+        <input id="RadioFalse" type="radio" value="false" name="answer" /> False
+    </p>
+    <p>
+        <input id="ButtonContinue" onclick="checkAnswer();" type="button" value="continue" />
+    </p>
+ 
+    <script language="javascript" type="text/javascript">
+		var TriviaData = new Array(10)
+        createTwoDimensionalArray(3);
+		 var questionsAsked = 0;
+        var totalCorrect = 0;
+        var currentQuestion = 0;
+        var selectionValid = false;
+ 
+        // Questions
+        TriviaData[0][0] = "Are 50% of trauma injuries, drownings and homicides caused by alcohol?";
+        TriviaData[1][0] = "Does Heroin suppress pain?";
+        TriviaData[2][0] = "Does Meth alter the physical structure of the brain?";
+        TriviaData[3][0] = "Does exercising release endorphins?";
+        TriviaData[4][0] = "Alcohol is a stimulant drug.";
+        TriviaData[5][0] = "Tobacco affects the central nervous system.";
+        TriviaData[6][0] = "Health Fair Events can be a good way of obtaining information on a proper balance of food.";
+        TriviaData[7][0] = "Methamphetamine’s risks include malnutrition and weight loss.";
+        TriviaData[8][0] = "Alcohol was named the world’s single greatest cause of preventable death by the World Health Organization in 2008.";
+        TriviaData[9][0] = "Heart Disease is the leading cause of death in the Bronx.";
+   
+        // Answers
+        TriviaData[0][1] = "true";
+        TriviaData[1][1] = "true";
+        TriviaData[2][1] = "false";
+        TriviaData[3][1] = "true";
+        TriviaData[4][1] = "false";
+        TriviaData[5][1] = "false";
+        TriviaData[6][1] = "true";
+        TriviaData[7][1] = "true";
+        TriviaData[8][1] = "false";
+        TriviaData[9][1] = "true";
+ 
+        // Has question been asked
+        // -- necessary because we are asking in random order
+        TriviaData[0][2] = "no";
+        TriviaData[1][2] = "no";
+        TriviaData[2][2] = "no";
+        TriviaData[3][2] = "no";
+        TriviaData[4][2] = "no";
+        TriviaData[5][2] = "no";
+        TriviaData[6][2] = "no";
+        TriviaData[7][2] = "no";
+        TriviaData[8][2] = "no";
+        TriviaData[9][2] = "no";
+ 
+        // Load up first question
+        setQuestion();
+ 
+        // Sets question text and indicator so that we know the question has been displayed
+        function setQuestion() {
+            selectionValid = false; // Flag to make sure question has not been asked yet
+            while (selectionValid == false) {
+                currentQuestion = Math.floor(Math.random() * 10); // randomly select starting question
+                if (TriviaData[currentQuestion][2] == "no") {
+                    selectionValid = true;
+                }
+            }
+            document.getElementById("TriviaQuestion").innerHTML = TriviaData[currentQuestion][0];
+            TriviaData[currentQuestion][2] = "yes";
+            questionsAsked = questionsAsked + 1;
+        }
+ 
+        function processAnswer(myAnswer) {
+            if (TriviaData[currentQuestion][1] == myAnswer) {
+                // answer correct
+                totalCorrect = totalCorrect + 1;
+            }
+        }
+ 
+        // This function creates our two dimensional array
+        function createTwoDimensionalArray(arraySize) {
+            for (i = 0; i < TriviaData.length; ++i)
+                TriviaData[i] = new Array(arraySize);
+        }
+ 
+        // This function checks the answer, updates correct total
+        // and randomly selects the next question
+        function checkAnswer() {
+            if (document.getElementById("RadioTrue").checked) {
+                processAnswer("true");
+            }
+            else {
+                processAnswer("false");
+            }
+            // get next question if not asked all yet
+            if (questionsAsked < 10) {
+                setQuestion();
+            }
+            // final question asked - disable button and show final results
+            else {
+                alert("Quiz complete! You got " + totalCorrect + " correct out of 10.");
+                document.getElementById("ButtonContinue").disabled = true;
+            }
+            // update totals
+            document.getElementById("NumberAsked").innerHTML = questionsAsked;
+            document.getElementById("NumberCorrect").innerHTML = totalCorrect;
+        }
+ 
+    </script>
+
+</body>
+
+
+</html>
