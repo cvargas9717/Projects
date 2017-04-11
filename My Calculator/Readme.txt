@@ -1,1 +1,1 @@
-A simple calculator with 4 basic functionalities written in Java
+A simple calculator with 5 basic functionalities written in Java
