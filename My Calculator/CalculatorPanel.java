@@ -14,6 +14,7 @@ public class CalculatorPanel extends JPanel implements ActionListener{
 	private static JButton sub;
 	private static JButton div;
 	private static JButton mult;
+	private static JButton power;
 	private static JTextField num1;
 	private static JTextField num2;
 	private static JLabel output; 
@@ -25,6 +26,7 @@ public class CalculatorPanel extends JPanel implements ActionListener{
 		sub = new JButton("-");
 		div = new JButton("/");
 		mult = new JButton("*");
+		power = new JButton("^");
 		
 		num1 = new JTextField("num1",10);
 		num2 = new JTextField("num2",10);
@@ -37,12 +39,13 @@ public class CalculatorPanel extends JPanel implements ActionListener{
 		add(sub);
 		add(div);
 		add(mult);
+		add(power);
 		
 		add.addActionListener(this);
 		sub.addActionListener(this);
 		div.addActionListener(this);
 		mult.addActionListener(this);
-		
+		power.addActionListener(this);
 		
 	
 	}
@@ -86,6 +89,8 @@ public class CalculatorPanel extends JPanel implements ActionListener{
 			case "*":
 					solution = a * b;
 				break;
+			case "^":
+				solution = (int)Math.pow(a, b);
 		
 		
 		}	
