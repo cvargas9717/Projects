@@ -124,7 +124,7 @@ public class Connect4 extends JFrame implements ActionListener,Connect4Interface
 		
 		
 		if(this.currPlayer =="Red"){
-			ImageIcon img = new ImageIcon("C:/Users/Charlie/Desktop/CMP 327 Spring 2017/src/connect4/red2.png");
+			ImageIcon img = new ImageIcon("C:/Users/Charlie/Desktop/CMP 327 Spring 2017/src/connect4/red.png");
 			btnClicked.setIcon(img);
 			btnClicked.setAlignmentX(CENTER_ALIGNMENT);
 			btnClicked.setDisabledIcon(img);
@@ -134,7 +134,7 @@ public class Connect4 extends JFrame implements ActionListener,Connect4Interface
 			//btnClicked.setBackground(Color.RED);
 		}
 		else if(this.currPlayer =="Yellow"){
-			ImageIcon img = new ImageIcon("C:/Users/Charlie/Desktop/CMP 327 Spring 2017/src/connect4/yellow3.jpg");
+			ImageIcon img = new ImageIcon("C:/Users/Charlie/Desktop/CMP 327 Spring 2017/src/connect4/yellow.jpg");
 			btnClicked.setIcon(img);
 			btnClicked.setDisabledIcon(img);
 			//btnClicked.setBackground(Color.YELLOW);
